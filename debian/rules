@@ -1,0 +1,63 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# ex: set tabstop=4 noexpandtab:
+#{
+# Copyright 2017 Samsung Electronics France SAS
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#}
+
+# Comment this to turn off verbose mode.
+export DH_VERBOSE=1
+project?=iotjs
+
+os_type?=$(shell uname | tr '[A-Z]' '[a-z]' || echo "unknown")
+arch_type?=$(shell dpkg --print-architecture || uname -m || echo "unknown")
+ifeq (amd64,${arch_type})
+arch_type=$(shell uname -m)
+endif
+ifeq (i386,${arch_type})
+arch_type=i686
+endif
+
+CMAKE_OPTIONS+=-DPLATFORM_DESCRIPTOR=${arch_type}-${os_type}
+export CMAKE_OPTIONS
+
+prep_files+=\
+ deps/jerry/jerry-core/profiles/.profile\
+ deps/libtuv/cmake/config/config_${arch_type}-${os_type}.cmake \
+ deps/libtuv/cmake/option/option_${arch_type}-${os_type}.cmake \
+ debian/${project}.1 \
+ #EOL
+
+%:
+	dh $@
+
+%.1: %.sgml
+	docbook-to-man "$<" > "$@"
+
+deps/libtuv/cmake/%.cmake: deps/libtuv/cmake
+	ls "$@" || touch "$@"
+	@ls -l "$@"
+
+deps/jerry/jerry-core/profiles/.profile: deps/jerry/jerry-core/profiles/es5.1.profile
+	ls "$@" || ln -fs "${<F}" "$@"
+	@ls -l "$@"
+
+rule/prep: ${prep_files}
+	@ls -l $^
+
+override_dh_auto_configure: rule/prep
+	dh_auto_configure -- ${CMAKE_OPTIONS}
+
+.PHONY: rule/%
