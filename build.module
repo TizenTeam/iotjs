@@ -2,7 +2,7 @@
   "module": {
     "supported": {
       "core": ["buffer", "console", "events", "fs", "module", "timers"],
-      "basic": ["assert", "dns", "http", "net", "stream", "testdriver"],
+      "basic": ["assert", "dns", "http", "net", "stream", "testdriver", "websocket"],
       "extended": {
         "linux": ["adc", "ble", "dgram", "gpio", "i2c", "pwm", "spi", "uart"],
         "nuttx": ["adc", "dgram", "gpio", "i2c", "pwm", "spi", "stm32f4dis", "uart"],

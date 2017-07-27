@@ -253,6 +253,7 @@ target_link_libraries(${TARGET_LIB_IOTJS}
   ${JERRY_LIBS}
   ${TUV_LIBS}
   libhttp-parser
+  websockets
   ${EXTERNAL_STATIC_LIB}
   ${EXTERNAL_SHARED_LIB}
 )
