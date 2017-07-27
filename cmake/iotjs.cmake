@@ -255,6 +255,7 @@ target_link_libraries(${TARGET_LIB_IOTJS}
   libhttp-parser
   ${EXTERNAL_STATIC_LIB}
   ${EXTERNAL_SHARED_LIB}
+  websockets
 )
 
 if("${LIB_INSTALL_DIR}" STREQUAL "")
