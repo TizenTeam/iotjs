@@ -1,6 +1,3 @@
-[submodule "deps/jerry"]
-	path = deps/jerry
-	url = https://github.com/jerryscript-project/jerryscript.git
 [submodule "deps/libtuv"]
 	path = deps/libtuv
 	url = https://github.com/Samsung/libtuv.git
