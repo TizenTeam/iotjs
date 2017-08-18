@@ -54,3 +54,7 @@ set(TUV_LIBS tuv)
 if("${TARGET_OS}" STREQUAL "LINUX")
   list(APPEND TUV_LIBS pthread)
 endif()
+
+if("${TARGET_OS}" STREQUAL "TIZEN")
+  list(APPEND TUV_LIBS pthread)
+endif()
