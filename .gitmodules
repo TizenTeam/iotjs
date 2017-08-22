@@ -1,3 +1,0 @@
-[submodule "deps/libtuv"]
-	path = deps/libtuv
-	url = https://github.com/Samsung/libtuv.git
