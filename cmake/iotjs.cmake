@@ -236,6 +236,7 @@ set(IOTJS_INCLUDE_DIRS
   ${JERRY_PORT_DIR}/include
   ${JERRY_INCLUDE_DIR}
   ${HTTPPARSER_INCLUDE_DIR}
+  ${MBEDTLS_INCLUDE_DIR}
   ${TUV_INCLUDE_DIR}
 )
 
@@ -250,11 +251,15 @@ set_target_properties(${TARGET_LIB_IOTJS} PROPERTIES
   ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
 )
 target_include_directories(${TARGET_LIB_IOTJS} PRIVATE ${IOTJS_INCLUDE_DIRS})
+
+SET(WEBSOCKETS_LIBS websockets)
+
 target_link_libraries(${TARGET_LIB_IOTJS}
   ${JERRY_LIBS}
   ${TUV_LIBS}
   libhttp-parser
-  websockets
+  ${MBEDTLS_LIBS}
+  ${WEBSOCKETS_LIBS}
   ${EXTERNAL_STATIC_LIB}
   ${EXTERNAL_SHARED_LIB}
 )
