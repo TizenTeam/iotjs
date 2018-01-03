@@ -14,6 +14,7 @@
 /test/module_generator/test_cpp/*.a
 /test/module_generator/test_cpp/*.o
 eslint.log
+/obj-*-*/
 
 # IDE related files
 nbproject
@@ -33,6 +34,7 @@ vgcore.*
 .tags*
 cscope.*
 *.pyc
+**/__pycache__/
 
 # Dependency directories
 node_modules/
@@ -49,3 +51,16 @@ TAGS
 # config files
 *.config
 !build.config
+
+# Local developer temporary place
+/tmp/
+
+# Debian files
+/debian/files
+/debian/*.debhelper.log
+/debian/*.substvars
+/debian/tmp/
+/debian/.debhelper/
+/debian/debhelper-build-stamp
+/debian/iotjs*/
+/debian/iotjs.1
