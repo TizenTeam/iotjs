@@ -1,0 +1,41 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# ex: set tabstop=4 noexpandtab:
+#{
+# Copyright 2018 Samsung Electronics France SAS
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#}
+
+project?=iotjs
+
+# Comment this to turn off verbose mode.
+export DH_VERBOSE=1
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
+CMAKE_OPTIONS+=-DFEATURE_PROFILE=es5.1
+CMAKE_OPTIONS+=-DPLATFORM_DESCRIPTOR=noarch-linux
+export CMAKE_OPTIONS
+
+
+%:
+	dh $@
+
+%.1: %.sgml
+	docbook-to-man $< > $@
+
+override_dh_auto_configure:
+	dh_auto_configure -- ${CMAKE_OPTIONS}
+
+override_dh_installman: debian/${project}.1
+	dh_installman
