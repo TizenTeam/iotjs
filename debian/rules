@@ -124,5 +124,7 @@ rule/debuild: debian/rules
 override_dh_auto_configure: rule/prep
 	dh_auto_configure -- ${CMAKE_OPTIONS}
 
+override_dh_shlibdeps:
+	@echo "TODO: dh_shlibdeps ignored on armhf"
 
 .PHONY: rule/%
