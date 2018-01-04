@@ -1,0 +1,26 @@
+Source: iotjs
+Section: web
+Priority: optional
+Maintainer: Philippe Coval <rzr@users.sf.net>
+Build-Depends: debhelper (>= 10), cmake, python,
+  docbook-to-man,
+  libcurl4-gnutls-dev | libcurl-ssl-dev | libcurl-dev
+Standards-Version: 4.1.3
+Homepage: http://iotjs.net
+
+Package: iotjs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Javascript Framework for Internet of Things
+ Inter-operable service platform in the world of IoT,
+ based on web technology.
+ The target of IoT.js is to run in resource constrained devices
+ such as only few kilobytes of RAM available device.
+
+Package: iotjs-dev
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Developer files for Javascript Framework for IoT
+ This package ships static library and developments files.
+ C Headers are installed into iotjs namespace.
+ This is mostly useful to embed iot.js in applications or debugging purposes.
