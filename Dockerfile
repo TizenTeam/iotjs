@@ -1,9 +1,13 @@
-#!/bin/echo docker build . --rm -v /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static
 #!/bin/echo docker build . -f
+#!/bin/echo docker run --rm -v /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static -ti bash
 # -*- coding: utf-8 -*-
 
 #FROM philipz/rpi-raspbian
-FROM debian:stable
+#FROM debian:stable
+FROM resin/armv7hf-debian
+RUN [ "cross-build-start" ]
+
+
 MAINTAINER Philippe Coval (philippe.coval@osg.samsung.com)
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -33,4 +37,9 @@ ADD . /usr/local/src/${project}
 WORKDIR /usr/local/src/${project}
 RUN echo "#log: Building ${project}" \
  && ./debian/rules \
+ && sudo debi \
+ && dpkg -L ${project} \
  && sync
+
+
+RUN [ "cross-build-end" ]  
