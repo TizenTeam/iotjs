@@ -21,7 +21,7 @@ default: rule/debuild
 # Comment this to turn off verbose mode.
 export DH_VERBOSE=1
 
-project?=iotjs
+package?=iotjs
 version?=$(shell [ -r debian/changelog ] && dpkg-parsechangelog \
 	| grep "Version:" | sed -e "s/Version: \(.*\)-.*/\1/g" \
 	|| echo "0.0")
@@ -30,7 +30,7 @@ os_type?=$(shell uname | tr '[A-Z]' '[a-z]' || echo "unknown")
 arch_type?=$(shell dpkg --print-architecture || uname -m || echo "unknown")
 export CMAKE_OPTIONS+=-DPLATFORM_DESCRIPTOR=${arch_type}-${os_type}
 
-tarball?=${CURDIR}/../${project}_${version}.orig.tar.gz
+tarball?=${CURDIR}/../${package}_${version}.orig.tar.gz
 
 prep_files+=\
  deps/jerry/jerry-core/profiles/.profile\
@@ -65,6 +65,7 @@ override_dh_auto_configure: rule/prep
 
 rule/debuild: debian/rules ${tarball}
 	which ${@F} || ${<} ${@D}/setup
+	ls -l .. ${tarball}
 	${@F} -uc -us
 
 ${tarball}: rule/prep
