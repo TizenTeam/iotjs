@@ -22,9 +22,9 @@ default: rule/debuild
 export DH_VERBOSE=1
 
 package?=iotjs
-version?=$(shell [ -r debian/changelog ] && dpkg-parsechangelog \
-	| grep "Version:" | sed -e "s/Version: \(.*\)-.*/\1/g" \
-	|| echo "0.0")
+version?=$(shell [ -r debian/changelog ] && which dpkg-parsechangelog-tmp 2> /dev/null \
+ && dpkg-parsechangelog | grep "Version:" | sed -e "s/Version: \(.*\)-.*/\1/g" \
+ || echo "0.0")
 
 os_type?=$(shell uname | tr '[A-Z]' '[a-z]' || echo "unknown")
 arch_type?=$(shell dpkg --print-architecture || uname -m || echo "unknown")
@@ -42,6 +42,8 @@ ifeq (amd64,${arch_type})
 arch_type=$(shell uname -m)
 endif
 
+help:
+	@echo "${tarball}"
 
 deps/libtuv/cmake/%.cmake: deps/libtuv/cmake
 	ls $@ || touch $@
@@ -64,8 +66,8 @@ override_dh_auto_configure: rule/prep
 	dh_auto_configure -- ${CMAKE_OPTIONS}
 
 rule/debuild: debian/rules ${tarball}
-	which ${@F} || ${<} ${@D}/setup
 	ls -l .. ${tarball}
+	which ${@F} || ${<} ${@D}/setup
 	${@F} -uc -us
 
 ${tarball}: rule/prep
