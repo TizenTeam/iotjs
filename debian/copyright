@@ -1,0 +1,293 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: iotjs
+Source: http://iotjs.net
+
+Files: *
+Copyright: 2015-2018, Samsung Electronics Co., Ltd. and other contributors
+License: Apache-2.0
+
+Files: config/nuttx/stm32f4dis/app/iotjs_main.c
+Copyright: 2013, Gregory Nutt <gnutt@nuttx.org>
+   2015-2018, Samsung Electronics Co., Ltd. and other contributors
+License: BSD-3-clause and Apache-2.0
+
+Files: config/nuttx/stm32f4dis/app/Makefile
+Copyright: 2009, 2011-2013, Gregory Nutt <gnutt@nuttx.org>
+   2015-2018, Samsung Electronics Co., Ltd. and other contributors
+License: BSD-3-clause and Apache-2.0
+
+Files: config/nuttx/stm32f4dis/app/Make.defs
+Copyright: 2016, University of Szeged
+    2016-2018, Samsung Electronics Co., Ltd. and other contributors
+License: Apache-2.0
+
+Files: config/tizenrt/artik05x/app/iotjs_main.c
+Copyright: 2013, Gregory Nutt <gnutt@nuttx.org>
+   2015-2018, Samsung Electronics Co., Ltd. and other contributors
+License: BSD-3-clause and Apache-2.0
+
+Files: config/tizenrt/artik05x/app/Makefile
+Copyright: 2008, 2010-2013, Gregory Nutt <gnutt@nuttx.org>
+   2016-2018, Samsung Electronics Co., Ltd. and other contributors
+License: BSD-3-clause and Apache-2.0
+
+Files: deps/http-parser/*
+Copyright: Igor Sysoev
+   Joyent, Inc. and other Node contributors
+License: MIT
+
+Files: deps/jerry/*
+Copyright: JS Foundation and other contributors, http://js.foundation
+   Copyright 2016, Samsung Electronics All Rights Reserved
+License: Apache-2.0
+
+Files: deps/jerry/jerry-core/debugger/debugger-sha1.c
+Copyright: 2006-2015, ARM Limited, All Rights Reserved
+   JS Foundation and other contributors, http://js.foundation
+License: Apache-2.0
+
+Files: deps/jerry/jerry-libc/jerry-libc-init.c
+Copyright: 2004, CodeSourcery, LLC
+   JS Foundation and other contributors, http://js.foundation
+License: ISC and Apache-2.0
+
+Files: deps/jerry/jerry-libm/*
+Copyright: 1993, Sun Microsystems, Inc
+License: ISC-no-disclaim
+ Permission to use, copy, modify, and distribute this
+ software is freely granted, provided that this notice
+ is preserved.
+
+Files: deps/jerry/LOGO.svg
+Copyright: 2016, JerryScript Community
+License: MIT
+
+Files: deps/jerry/targets/esp8266/*
+Copyright: 2013-2014, Espressif Systems (Wuxi)
+   Copyright 2015, Samsung Electronics Co., Ltd
+License: MIT and Apache-2.0
+
+Files: deps/jerry/third-party/valgrind/*.h
+Copyright: 2000-2011, Julian Seward
+License: BSD-4-clause
+
+Files: deps/jerry/targets/tizenrt-artik05x/apps/jerryscript/Makefile
+Copyright: 2008, 2010-2013, Gregory Nutt. All rights reserved
+   JS Foundation and other contributors, http://js.foundation
+   2016, Samsung Electronics All Rights Reserved
+License: BSD-3-clause and Apache-2.0
+
+Files: deps/jerry/targets/tizenrt-artik05x/configs/jerryscript/Make.defs
+Copyright: 2011, 2012-2013, Gregory Nutt. All rights reserved
+License: BSD-3-clause
+
+Files: deps/libtuv/*
+Copyright: Joyent, Inc. and other Node contributors
+   Copyright 2015-2016, Samsung Electronics Co., Ltd.
+License: MIT and Apache-2.0
+
+Files: deps/libtuv/include/tree.h
+Copyright: 2002, Niels Provos <provos@citi.umich.edu>
+License: BSD-2-clause
+
+Files: deps/libtuv/include/stdint-msvc2008.h
+Copyright: Alexander Chemeris
+License: BSD-3-clause
+
+Files: deps/libtuv/src/heap-inl.h
+  deps/libtuv/src/queue.h
+  deps/libtuv/src/unix/atomic-ops.h
+  deps/libtuv/src/unix/spinlock.h
+Copyright: 2013, Ben Noordhuis <info@bnoordhuis.nl>
+License: ISC
+
+Files: deps/libtuv/include/android-ifaddrs.h
+Copyright: 1995, 1999, Berkeley Software Design
+License: BSD-1-clause
+
+Files: deps/libtuv/src/unix/android-ifaddrs.c
+Copyright: 2013, Kenneth MacKay
+   2014, Emergya (Cloud4all, FP7/2007-2013 grant agreement #289016)
+License: BSD-2-clause
+
+Files: deps/libtuv/src/unix/pthread-barrier.c
+   deps/libtuv/include/pthread-barrier.h
+Copyright: 2016, Kari Tristan Helgason <kthelgason@gmail.com>
+License: ISC
+
+Files: deps/libtuv/src/unix/pthread-fixes.c
+Copyright: 2013, Sony Mobile Communications AB
+   2012, Google Inc.
+License: BSD-3-clause
+
+Files: deps/libtuv/src/inet.c
+Copyright: 2013, Ben Noordhuis <info@bnoordhuis.nl>
+   2015-2016, Samsung Electronics Co., Ltd.
+License: ISC
+
+Files: src/js/assert.js
+Copyright: 2009, Thomas Robinson <280north.com>
+   2016-2018, Samsung Electronics Co., Ltd. and other contributors
+License: MIT and Apache-2.0
+
+Files: src/js/i2c.js
+Copyright: 2013, Kelly Korevec <korevec@gmail.com>
+License: BSD-3-clause and Apache-2.0
+
+Files: src/js/ble_hci_socket_crypto.js
+   src/js/ble_hci_socket_mgmt.js
+Copyright: 2015, Sandeep Mistry sandeep.mistry@gmail.com
+   2016-2018, Samsung Electronics Co., Ltd. and other contributors
+License: MIT and Apache-2.0
+
+Files: tools/check_signed_off.sh
+Copyright: 2016, University of Szeged
+   2015-2018, Samsung Electronics Co., Ltd. and other contributors
+License: Apache-2.0
+
+Files: tools/common_py/system/filesystem.py
+Copyright: 2010, Google Inc. All rights reserved.
+   2016-2018, Samsung Electronics Co., Ltd. and other contributors
+License: BSD-3-clause and Apache-2.0
+
+Files: debian/*
+Copyright: 2018, Samsung Electronics France SAS
+License: Apache-2.0
+
+License: Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at:
+ http://www.apache.org/licenses/LICENSE-2.0
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ On Debian systems, the complete text of the Apache
+ License version 2 can be found in "/usr/share/common-licenses/Apache-2.0".
+
+License: BSD-1-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ .
+ THIS SOFTWARE IS PROVIDED BY Berkeley Software Design, Inc. ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL Berkeley Software Design, Inc. BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: BSD-2-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ 1. Redistributions of source code must retain the above copyright notice, this
+    list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: BSD-3-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ 1. Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+ 3. Neither the name of the ORGANIZATION nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: BSD-4-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. The origin of this software must not be misrepresented; you must
+    not claim that you wrote the original software.  If you use this
+    software in a product, an acknowledgment in the product
+    documentation would be appreciated but is not required.
+ 3. Altered source versions must be plainly marked as such, and must
+    not be misrepresented as being the original software.
+ 4. The name of the author may not be used to endorse or promote
+    products derived from this software without specific prior written
+    permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS
+ OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+ DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: ISC
+ Permission to use, copy, modify, and/or distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+License: MIT
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
