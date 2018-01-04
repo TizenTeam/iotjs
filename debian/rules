@@ -21,8 +21,7 @@ default: rule/debuild
 # Comment this to turn off verbose mode.
 export DH_VERBOSE=1
 
-project?=$(shell dpkg-parsechangelog \
-	 | sed -n 's/Source: \(.*\)/\1/p')
+project?=iotjs
 version?=$(shell [ -r debian/changelog ] && dpkg-parsechangelog \
 	| grep "Version:" | sed -e "s/Version: \(.*\)-.*/\1/g" \
 	|| echo "0.0")
