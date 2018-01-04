@@ -1,5 +1,5 @@
 Source: iotjs
-Section: extra
+Section: web
 Priority: optional
 Maintainer: Philippe Coval <philippe.coval@osg.samsung.com>
 Build-Depends: debhelper (>= 8.0.0), cmake
