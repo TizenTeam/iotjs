@@ -65,7 +65,7 @@ override_dh_auto_configure: rule/prep
 
 rule/debuild: debian/rules ${tarball}
 	which ${@F} || ${<} ${@D}/setup
-	${@F}
+	${@F} -uc -us
 
 ${tarball}: rule/prep
 	 tar cvfz $@ \
