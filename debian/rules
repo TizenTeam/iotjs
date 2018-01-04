@@ -42,8 +42,6 @@ ifeq (amd64,${arch_type})
 arch_type=$(shell uname -m)
 endif
 
-help:
-	@echo "${tarball}"
 
 deps/libtuv/cmake/%.cmake: deps/libtuv/cmake
 	ls $@ || touch $@
