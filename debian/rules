@@ -64,7 +64,6 @@ override_dh_auto_configure: rule/prep
 	dh_auto_configure -- ${CMAKE_OPTIONS}
 
 rule/debuild: debian/rules ${tarball}
-	ls -l .. ${tarball}
 	which ${@F} || ${<} ${@D}/setup
 	${@F} -uc -us
 
@@ -74,6 +73,7 @@ ${tarball}: rule/prep
 --exclude 'debian' --exclude-vcs \
 .
 	ls -l $@
+
 rule/tarball: ${tarball}
 	ls -l $<
 
