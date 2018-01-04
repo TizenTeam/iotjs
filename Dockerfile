@@ -1,6 +1,8 @@
+#!/bin/echo docker build . --rm -v /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static
 #!/bin/echo docker build . -f
 # -*- coding: utf-8 -*-
 
+#FROM philipz/rpi-raspbian
 FROM debian:stable
 MAINTAINER Philippe Coval (philippe.coval@osg.samsung.com)
 
