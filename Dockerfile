@@ -16,8 +16,10 @@
 # limitations under the License.
 #}
 
-FROM debian:stable
+FROM resin/rpi-raspbian
 MAINTAINER Philippe Coval (p.coval@samsung.com)
+
+RUN [ "cross-build-start" ]
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL en_US.UTF-8
@@ -76,3 +78,5 @@ RUN echo "#log: ${project}: Building sources" \
   && ls -la /usr/local/src/${project}/*.* \
   && dpkg -L ${project} \
   && sync
+
+RUN [ "cross-build-end" ]
