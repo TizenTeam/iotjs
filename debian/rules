@@ -121,4 +121,8 @@ rule/debuild: debian/rules
 	${@F} -us -uc
 
 
+override_dh_auto_configure: rule/prep
+	dh_auto_configure -- ${CMAKE_OPTIONS}
+
+
 .PHONY: rule/%
