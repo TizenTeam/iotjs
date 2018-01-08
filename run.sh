@@ -81,6 +81,8 @@ setup_debian_()
     which git || sudo apt-get install git
     which docker || sudo apt-get install docker.io
 
+    sudo apt-get install qemu qemu-user-static binfmt-support
+    sudo update-binfmts --enable qemu-arm
 }
 
 
