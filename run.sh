@@ -24,15 +24,14 @@ env_()
     project="iotjs"
     org="Samsung"
     branch="master"
-    url_suffix="#{branch}"
 
-    user="rzr" # Update here if forking
-    org="${user}"
+    # user="${USER}" # Update here if forking
+    # org="${user}"
     # branch="sandbox/${user}/${branch}"
     # url_suffix="#{branch}"
-    url_suffix="" # TODO: For older docker
+    # url_suffix="" # TODO: For older docker or:
 
-    url="https://github.com/${org}/${project}.git${url_suffix}"
+    url="https://github.com/${org}/${project}.git#${branch}"
     run_url="https://raw.githubusercontent.com/${org}/${project}/${branch}/run.sh"
 
     release="0.0.0"
