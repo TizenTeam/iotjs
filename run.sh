@@ -25,9 +25,9 @@ env_()
     org="Samsung"
     branch="master"
 
-    # user="${USER}" # Update here if forking
-    # org="${user}"
-    # branch="sandbox/${user}/${branch}"
+    user="rzr" # Update here if forking
+    org="tizenteam"
+    branch="sandbox/${user}/devel/${branch}"
     # url_suffix="#{branch}"
     # url_suffix="" # TODO: For older docker or:
 
