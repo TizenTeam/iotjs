@@ -26,8 +26,8 @@ env_()
     branch="master"
     url_suffix="#{branch}"
 
-    user="rzr" # Update here if forking
-    org="${user}"
+    # user="rzr" # Update here if forking
+    org="TizenTeam"
     # branch="sandbox/${user}/${branch}"
     # url_suffix="#{branch}"
     url_suffix="" # TODO: For older docker
