@@ -28,8 +28,9 @@ env_()
     user="rzr" # Update here if forking
     org="tizenteam"
     branch="sandbox/${user}/devel/${branch}"
-    # url_suffix="#{branch}"
-    # url_suffix="" # TODO: For older docker or:
+   
+    org="$user" # For older docker ~1.4.2 (ubuntu/14.04)
+    branch="master"
 
     url="https://github.com/${org}/${project}.git#${branch}"
     run_url="https://raw.githubusercontent.com/${org}/${project}/${branch}/run.sh"
