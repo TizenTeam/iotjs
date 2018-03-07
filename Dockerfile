@@ -16,7 +16,7 @@
 # limitations under the License.
 #}
 
-FROM resin/rpi-raspbian
+FROM resin/rpi-raspbian:stretch
 MAINTAINER Philippe Coval (philippe.coval@osg.samsung.com)
 
 RUN [ "cross-build-start" ]
