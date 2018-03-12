@@ -31,7 +31,7 @@ IOTJS_DEFINE_NATIVE_HANDLE_INFO_THIS_MODULE(websocket);
     printf("%s:%d: " f , __FILE__, __LINE__, k, v)
 
 #define LOGfp(a) \
-    logf3("log: %s=%p\n", (#a), a)
+    logf3("log: %s=%p\n", (#a), (void*) (a))
 
 #define LOGfs(a) \
     logf3("log: %s=%s\n", (#a), a)
@@ -93,7 +93,7 @@ callback_dumb_increment(struct lws *wsi, enum lws_callback_reasons reason,
       iotjs_jargs_t const * jargs = iotjs_jargs_get_empty();
       LOGfp(jargs);
       iotjs_jval_t jprop = iotjs_jval_get_property(jthis, "onopen");
-      LOGfp(jprop);
+      //LOGfp(jprop);
       iotjs_make_callback(&jprop, jthis, jargs);
       lws_callback_on_writable(wsi);
 
@@ -288,7 +288,7 @@ iotjs_jval_t InitWebsocket() {
   printf("#{ %s\n", __PRETTY_FUNCTION__);
   iotjs_jval_t constructor =
   iotjs_jval_create_function_with_dispatch(W3cWebsocket);
-  LOGfp(constructor);
+  //LOGfp(constructor);
   iotjs_jval_t prototype = iotjs_jval_create_object();
   iotjs_jval_set_method(&prototype, "send", W3cwebsocketSend);
   iotjs_jval_set_method(&prototype, "close", W3cwebsocketClose);
