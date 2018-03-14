@@ -74,7 +74,7 @@ callback_dumb_increment(struct lws *wsi, enum lws_callback_reasons reason,
 			void *user, void *in, size_t len)
 {
   //printf("#{ %s\n", __PRETTY_FUNCTION__);
-  //LOGfd(reason);
+    LOGfd(reason);
   switch (reason) {
      case LWS_CALLBACK_GET_THREAD_ID:
       //LOGfd(LWS_CALLBACK_GET_THREAD_ID);
@@ -113,9 +113,31 @@ callback_dumb_increment(struct lws *wsi, enum lws_callback_reasons reason,
       LOGfd(LWS_CALLBACK_CLIENT_APPEND_HANDSHAKE_HEADER);
       //libwebsocket_callback_on_writable(this, wsi);
       break;
-    case LWS_CALLBACK_CLIENT_WRITEABLE:
-      LOGfd(LWS_CALLBACK_CLIENT_WRITEABLE);
+
+  case LWS_CALLBACK_CLIENT_RECEIVE:
+      LOGfd( LWS_CALLBACK_CLIENT_RECEIVE);
+      {
+      void* user = lws_get_protocol(wsi)->user;
+      LOGfp(user);
+      const iotjs_jval_t* jthis = (iotjs_jval_t*) user;
+      
+      LOGfp(jthis);
+      iotjs_jargs_t jargs = iotjs_jargs_create(1);
+
+      iotjs_jval_t message = iotjs_jval_create_object(in);
+      iotjs_jargs_append_jval(&jargs, &message);
+
+      iotjs_jval_set_property_string_raw(&message, "data", in);
+      
+      //LOGfp(jargs);
+      iotjs_jval_t jprop = iotjs_jval_get_property(jthis, "onmessage");
+      //LOGfp(jprop);
+      iotjs_make_callback(&jprop, jthis, &jargs);
+      }
       break;
+      
+    case LWS_CALLBACK_CLIENT_WRITEABLE:
+        break;
 
     default:
       break;

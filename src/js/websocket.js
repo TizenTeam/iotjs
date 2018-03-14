@@ -22,7 +22,11 @@ function Websocket()
 
 Websocket.prototype.w3cwebsocket = function(url)
 {
-    return new websocketBuiltin(this, url);
+    var instance = new websocketBuiltin(this, url);
+
+    var interval = setInterval(function() {
+        instance.idle_(); }, 8);
+    return instance;
 }
 
 Websocket.prototype.w3cwebsocket.close = function() {
@@ -35,6 +39,8 @@ Websocket.prototype.w3cwebsocket.send = function send(data)
 }
 
 Websocket.prototype.w3cwebsocket.idle_ = function() {
+    console.log("############");
+    
     return websocketBuiltin.idle_();
 }
 

@@ -4,19 +4,17 @@ var console = require('console');
 var WebSocket = require('websocket').w3cwebsocket;
 var url= "ws://localhost:1337/";
 var ws = new WebSocket(url);
+//var timers = require('timers');
 
 function log(message)
 {
-    var text = JSON.stringify(message)
+    var text;
+    try {
+        text = JSON.stringify(message);
+    } catch(err) {
+        text = message;
+    };
     console.log("log: client.js: " + text);
-}
-
-function idle_(num)
-{
-    for(var i=0; i<num; i++) {
-        log("idle:" + i);
-        ws.idle_() 
-    }
 }
 
 function main(connection)
@@ -32,11 +30,19 @@ function main(connection)
         log("onclose:");
     }
 
-    idle_(0x8); 
-    ws.close(ws);
-    idle_(0x8);
-    log("} main");
+    /// https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent
+    ws.onmessage = function(evt){
+        log("onmessage");
+        log(evt.data);
+    };
+    //ws.close(ws);
 
+
+    log("} main");
 }
 
 main();
+
+
+// TODO:
+// NODE_MODULES=../node_modules/websockets/ node samples/websocket-hello/server.js 
