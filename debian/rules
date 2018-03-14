@@ -73,6 +73,8 @@ rule/setup: /etc/debian_version
 \
   docbook-to-man \
   libcurl4-gnutls-dev \
+\
+ libwebsockets-dev \
  #EOL
 
 rule/version:
