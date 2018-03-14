@@ -1,0 +1,45 @@
+From: Philippe Coval <philippe.coval@osg.samsung.com>
+Date: Fri, 25 Aug 2017 03:18:12 +0200
+Subject: iotjs: Install binaries to system (#1134)
+
+This will be helpful for packaging,
+for example on Tizen install using RPM macro: "%make_install"
+or Debian's debhelper.
+
+Work along CMAKE_INSTALL_PREFIX,
+or/and can be overloaded individualy to alternate locations.
+
+IoT.js-DCO-1.0-Signed-off-by: Philippe Coval philippe.coval@osg.samsung.com
+Forwarded: https://github.com/Samsung/iotjs/pull/1134
+Origin: https://github.com/TizenTeam/iotjs/commit/2ef10fa50b5adf5fe59fd924f44efcd597e57d7e.patch
+---
+ cmake/iotjs.cmake | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/cmake/iotjs.cmake b/cmake/iotjs.cmake
+index 9e59905..b39f3c1 100644
+--- a/cmake/iotjs.cmake
++++ b/cmake/iotjs.cmake
+@@ -257,6 +257,16 @@ target_link_libraries(${TARGET_LIB_IOTJS}
+   ${EXTERNAL_SHARED_LIB}
+ )
+ 
++if("${LIB_INSTALL_DIR}" STREQUAL "")
++  set(LIB_INSTALL_DIR "lib")
++endif()
++
++if("${BIN_INSTALL_DIR}" STREQUAL "")
++  set(BIN_INSTALL_DIR "bin")
++endif()
++
++install(TARGETS ${TARGET_LIB_IOTJS} DESTINATION ${LIB_INSTALL_DIR})
++
+ if(NOT BUILD_LIB_ONLY)
+ 
+   if("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
+@@ -275,4 +285,5 @@ if(NOT BUILD_LIB_ONLY)
+   )
+   target_include_directories(${TARGET_IOTJS} PRIVATE ${IOTJS_INCLUDE_DIRS})
+   target_link_libraries(${TARGET_IOTJS} ${TARGET_LIB_IOTJS})
++  install(TARGETS ${TARGET_IOTJS} DESTINATION ${BIN_INSTALL_DIR})
+ endif()
