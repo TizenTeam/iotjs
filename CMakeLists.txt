@@ -58,12 +58,14 @@ set(ROOT_DIR ${CMAKE_SOURCE_DIR})
 set(ARCHIVE_DIR ${CMAKE_BINARY_DIR}/lib)
 
 # Common compile flags
-set(CFLAGS_COMMON
+set(CFLAGS_COMMON_TODO
   -Wall
   -Wextra
   -Werror
   -Wno-unused-parameter
   -Wsign-conversion
+)
+set(CFLAGS_COMMON
   -std=gnu99
 )
 
