@@ -34,8 +34,10 @@ tarball?=${CURDIR}/../${project}_${version}.orig.tar.gz
 export tarball
 
 os_type?=$(shell uname | tr '[A-Z]' '[a-z]' || echo "unknown")
-arch_type?=$(shell dpkg --print-architecture || uname -m || echo "unknown")
+arch_type?=$(shell dpkg --print-architecture || echo "noarch")
+arch_type=noarch
 CMAKE_OPTIONS+=-DPLATFORM_DESCRIPTOR=${arch_type}-${os_type}
+CMAKE_OPTIONS+=-DTARGET_ARCH=${arch_type}
 profile_file?=profiles/full.profile
 CMAKE_OPTIONS+=-DIOTJS_PROFILE="${profile_file}"
 export CMAKE_OPTIONS
@@ -64,7 +66,7 @@ deps/%: debian/rules .gitmodules deps
 	@ls -l $@
 
 deps/libtuv/cmake/%.cmake: deps/libtuv/cmake
-	ls $@ || touch $@
+#	ls $@ || touch $@
 	@ls -l $@
 
 deps/jerry/jerry-core/profiles/es5.1.profile: deps/jerry/jerry-core
