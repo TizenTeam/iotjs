@@ -37,20 +37,19 @@ ln -fs  \
  es5.1.profile \
  deps/jerry/jerry-core/profiles/.profile
 
+#  -DCMAKE_C_COMPILER="gcc"
+#  -DCMAKE_SYSTEM_PROCESSOR="%{arch_type}"
+#  -DCMAKE_SYSTEM_NAME="Linux"
+# -DTARGET_BOARD="%{TARGET_BOARD}" 
 
 %build
-cmake \
- -DCMAKE_INSTALL_PREFIX="%{prefix}"\
- -DCMAKE_C_COMPILER="gcc" \
- -DCMAKE_SYSTEM_NAME="Linux" \
- -DCMAKE_SYSTEM_PROCESSOR="%{arch_type}" \
- -DENABLE_STATIC_LINK="OFF" \
- -DPLATFORM_DESCRIPTOR="%{arch_type}-%{os_type}" \
- -DTARGET_BOARD="%{TARGET_BOARD}" \
- .
+CMAKE_OPTIONS='-DFEATURE_PROFILE=es5.1  -DPLATFORM_DESCRIPTOR=noarch-linux  -DCMAKE_INSTALL_PREFIX="%{prefix}"'
+export CMAKE_OPTIONS
 
+which cc
+cc --version
+cmake .
 cmake --build . || make V=1 VERBOSE=1
-
 
 %install
 %make_install
