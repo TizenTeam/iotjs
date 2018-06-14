@@ -28,7 +28,9 @@ export DH_VERBOSE=1
 export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 
 CMAKE_OPTIONS+=-DFEATURE_PROFILE=es5.1
-CMAKE_OPTIONS+=-DPLATFORM_DESCRIPTOR=noarch-linux
+os_type?=$(shell uname | tr '[A-Z]' '[a-z]' || echo "unknown")
+arch_type?=$(shell dpkg --print-architecture || echo "noarch")
+CMAKE_OPTIONS+=-DPLATFORM_DESCRIPTOR=${arch_type}-${os_type}
 export CMAKE_OPTIONS
 
 version?=$(shell [ -r debian/changelog ] \
@@ -40,6 +42,9 @@ tarball?=${CURDIR}/../${project}_${version}.orig.tar.gz
 export tarball
 
 prep_files+=deps/jerry/CMakeLists.txt
+prep_files+=deps/jerry/jerry-core/profiles/.profile
+prep_files+=deps/libtuv/cmake/config/config_${arch_type}-${os_type}.cmake
+prep_files+=deps/libtuv/cmake/option/option_${arch_type}-${os_type}.cmake
 
 
 %:
@@ -48,7 +53,7 @@ prep_files+=deps/jerry/CMakeLists.txt
 %.1: %.sgml
 	docbook-to-man $< > $@
 
-override_dh_auto_configure:
+override_dh_auto_configure: rule/prep
 	dh_auto_configure -- ${CMAKE_OPTIONS}
 
 override_dh_installman: debian/${project}.1
@@ -60,6 +65,24 @@ deps/%: debian/rules .gitmodules deps
 	git submodule update
 	@ls -l $@
 
+cmake/config/${arch_type}-${os_type}.cmake: cmake/config/noarch-${os_type}.cmake
+	@ls $@ || ln -fs ${<F} $@
+
+deps/libtuv/cmake/%.cmake: deps/libtuv/cmake
+	@ls -l $@
+
+deps/libtuv/cmake/config/config_${arch_type}-${os_type}.cmake: deps/libtuv/cmake/config/config_noarch-${os_type}.cmake
+	@ls $@ || ln -fs ${<F} $@
+
+deps/libtuv/cmake/option/option_${arch_type}-${os_type}.cmake: deps/libtuv/cmake/option/option_noarch-${os_type}.cmake
+	@ls $@ || ln -fs ${<F} $@
+
+deps/jerry/jerry-core/profiles/es5.1.profile: deps/jerry/jerry-core
+	@ls -l $@
+
+deps/jerry/jerry-core/profiles/.profile: deps/jerry/jerry-core/profiles/es5.1.profile
+	ls $@ || ln -fs ${<F} $@
+	@ls -l $@
 
 ${tarball}: rule/prep
 	 tar cvfz "$@" \
@@ -107,3 +130,4 @@ rule/debuild: debian/rules
 	${@F} -S -us -uc
 	${@F} -us -uc
 
+.PHONY: rule/%
