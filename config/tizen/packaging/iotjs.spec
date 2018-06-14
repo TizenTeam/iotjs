@@ -1,5 +1,5 @@
 Name: iotjs
-Version: 1.0.0
+Version: 1.0
 Release: 0
 Summary: Platform for Internet of Things with JavaScript
 Group: Network & Connectivity
