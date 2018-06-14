@@ -68,6 +68,7 @@ RUN echo "#log: ${project}: Preparing sources" \
   && git init \
   && git add -f . \
   && git commit -am 'WIP: Import ${project}' \
+  && git tag -d release_1.0 \
   && git tag release_1.0 HEAD \
   && sync
 
@@ -76,7 +77,7 @@ RUN echo "#log: ${project}: Building sources" \
 -c ./config/tizen/sample.gbs.conf \
 build \
 --include-all \
--P "profile.tizen" \
+-P "profile.tizen_3_0" \
 --arch "armv7l" \
   && sync
 
