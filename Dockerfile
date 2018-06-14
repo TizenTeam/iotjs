@@ -48,6 +48,20 @@ RUN echo "#log: ${project}: Setup system" \
   && apt-get clean \
   && sync
 
+RUN echo "#log: ${project}: Setup system" \
+  && set -x \
+  && apt-get update -y \
+  && apt-get install -y \
+  build-essential \
+  debhelper \
+  devscripts \
+  fakeroot \
+\
+  cmake \
+  git \
+  python \
+  && sync
+
 ADD . /usr/local/src/${project}/${project}/
 WORKDIR /usr/local/src/${project}/${project}/
 RUN echo "#log: ${project}: Preparing sources" \
