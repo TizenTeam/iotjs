@@ -34,7 +34,7 @@ tarball?=${CURDIR}/../${project}_${version}.orig.tar.gz
 export tarball
 
 os_type?=$(shell uname | tr '[A-Z]' '[a-z]' || echo "unknown")
-arch_type?=$(shell dpkg --print-architecture || uname -m || echo "unknown")
+arch_type?=$(shell dpkg --print-architecture || echo "noarch")
 CMAKE_OPTIONS+=-DPLATFORM_DESCRIPTOR=${arch_type}-${os_type}
 profile_file?=profiles/full.profile
 CMAKE_OPTIONS+=-DIOTJS_PROFILE="${profile_file}"
@@ -63,19 +63,27 @@ deps/%: debian/rules .gitmodules deps
 	git submodule update
 	@ls -l $@
 
+cmake/config/${arch_type}-${os_type}.cmake: cmake/config/noarch-${os_type}.cmake
+	@ls $@ || ln -fs ${<F} $@
+
 deps/libtuv/cmake/%.cmake: deps/libtuv/cmake
-	ls $@ || touch $@
 	@ls -l $@
+
+deps/libtuv/cmake/config/config_${arch_type}-${os_type}.cmake: deps/libtuv/cmake/config/config_noarch-${os_type}.cmake
+	@ls $@ || ln -fs ${<F} $@
+
+deps/libtuv/cmake/option/option_${arch_type}-${os_type}.cmake: deps/libtuv/cmake/option/option_noarch-${os_type}.cmake
+	@ls $@ || ln -fs ${<F} $@
 
 deps/jerry/jerry-core/profiles/es5.1.profile: deps/jerry/jerry-core
 	@ls -l $@
 
 deps/jerry/jerry-core/profiles/.profile: deps/jerry/jerry-core/profiles/es5.1.profile
-	ls $@ || ln -fs ${<F} $@
+	@ls $@ || ln -fs ${<F} $@
 	@ls -l $@
 
 ${profile_file}: profiles/default.profile
-	ls $@ || ln -fs ${<F} $@
+	@ls $@ || ln -fs ${<F} $@
 	@ls -l $@
 
 ${tarball}: rule/prep
