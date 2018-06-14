@@ -27,15 +27,14 @@ Platform for Internet of Things with JavaScript
 
 
 %prep
- 
 %setup -q -n %{name}-%{version}
 
-touch deps/libtuv/cmake/config/config_%{arch_type}-%{os_type}.cmake
-touch deps/libtuv/cmake/option/option_%{arch_type}-%{os_type}.cmake
+#touch deps/libtuv/cmake/config/config_%{arch_type}-%{os_type}.cmake
+#touch deps/libtuv/cmake/option/option_%{arch_type}-%{os_type}.cmake
 
-ln -fs  \
- es5.1.profile \
- deps/jerry/jerry-core/profiles/.profile
+ #ln -fs  \
+ #es5.1.profile \
+ #deps/jerry/jerry-core/profiles/.profile
 
 #  -DCMAKE_C_COMPILER="gcc"
 #  -DCMAKE_SYSTEM_PROCESSOR="%{arch_type}"
@@ -56,7 +55,7 @@ cmake --build . || make V=1 VERBOSE=1
 
 
 %clean
- 
+
 
 %files
 %license LICENSE
