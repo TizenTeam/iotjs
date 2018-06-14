@@ -9,8 +9,17 @@ URL: https://iotjs.net/
 #X-Vcs-Url: https://github.com/Samsung/iotjs/
 
 %ifarch armv7l armv7hl armv7nhl armv7tnhl armv7thl
-%define arch_type arm
+#%define arch_type arm
 %define TARGET_BOARD artik10
+%endif
+
+%if 3 <= 0%{?tizen_version_major}
+%ifarch armv7l armv7hl armv7nhl armv7tnhl armv7thl
+BuildRequires: python-accel-armv7l-cross-arm
+%endif
+%ifarch aarch64
+BuildRequires: python-accel-aarch64-cross-aarch64
+%endif
 %endif
 
 %{!?arch_type: %define arch_type %{_arch}}
@@ -42,12 +51,13 @@ Platform for Internet of Things with JavaScript
 # -DTARGET_BOARD="%{TARGET_BOARD}" 
 
 %build
-CMAKE_OPTIONS='-DFEATURE_PROFILE=es5.1  -DPLATFORM_DESCRIPTOR=noarch-linux  -DCMAKE_INSTALL_PREFIX="%{prefix}"'
-export CMAKE_OPTIONS
-
-which cc
 cc --version
-cmake .
+cmake . \
+      -DCMAKE_INSTALL_PREFIX="%{prefix}" \
+      -DFEATURE_PROFILE=es5.1 \
+      -DPLATFORM_DESCRIPTOR=noarch-linux \
+      #eol
+
 cmake --build . || make V=1 VERBOSE=1
 
 %install
