@@ -68,7 +68,7 @@ RUN echo "#log: ${project}: Preparing sources" \
   && git init \
   && git add -f . \
   && git commit -am 'WIP: Import ${project}' \
-  && git tag release_1.0.0 HEAD \
+  && git tag release_1.0 HEAD \
   && sync
 
 RUN echo "#log: ${project}: Building sources" \
