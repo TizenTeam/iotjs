@@ -80,7 +80,7 @@ function(addModuleDependencies module varResult)
 endfunction()
 
 # Set the default profile if not specified
-set(IOTJS_PROFILE "${CMAKE_SOURCE_DIR}/profiles/full.profile"
+set(IOTJS_PROFILE "${CMAKE_SOURCE_DIR}/profiles/default.profile"
     CACHE STRING "Path to profile.")
 
 if(NOT IS_ABSOLUTE ${IOTJS_PROFILE})
