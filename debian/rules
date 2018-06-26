@@ -127,9 +127,14 @@ rule/dist: rule/setup rule/version rule/prep rule/tarball
 
 rule/debuild: debian/rules
 	@which ${@F} || ${<D}/${<F} ${@D}/setup
+	[ "" != "${tarball}" || ${<D}/${<F} ${@D}/tarball
 	@ls ${tarball} || ${<D}/${<F} ${@D}/tarball
 	${<D}/${<F} ${@D}/version
 	${@F} -S -us -uc
 	${@F} -us -uc
+
+rule/tests:
+	@echo "TODO"
+	IOTJS_EXTRA_MODULE_PATH=test/ obj-*/bin/iotjs test/node/parallel/test-http-catch-uncaughtexception.js 
 
 .PHONY: rule/%
