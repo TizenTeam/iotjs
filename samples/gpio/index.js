@@ -17,7 +17,6 @@ var console = require('console');
 var log = console.log || function(arg) {};
 log(process);
 
-var gpio = require('gpio');
 
 function GpioTest(config)
 {
@@ -54,4 +53,10 @@ function GpioTest(config)
   }
 }
 
-var test = new GpioTest();
+var gpio = require('gpio');
+var pin = 0;
+if (process.argv.length > 2) {
+  pin = Number(process.argv[2]);
+}
+var config = { frequency: 1, gpio: { pin: pin , direction: gpio.DIRECTION.IN }};
+var test = new GpioTest(config);
