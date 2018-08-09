@@ -13,25 +13,15 @@
  * limitations under the License.
  */
 
-function extendI2CBus(i2cBus) {
-  i2cBus.readBytes = function(offset, len, callback) {
-    this.writeSync([offset]);
-    this.read(len, function(err, res) {
-      callback(err, res);
-    });
-  };
-  return i2cBus;
-}
-
 var i2c = {
   open: function(config, callback) {
     var i2cBus = new native(config, function(err) {
-      callback(err, extendI2CBus(i2cBus));
+      callback(err, i2cBus);
     });
     return i2cBus;
   },
   openSync: function(config) {
-    return extendI2CBus(new native(config));
+    return new native(config);
   },
 };
 
