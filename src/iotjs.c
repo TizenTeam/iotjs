@@ -53,6 +53,7 @@ static bool jerry_initialize(iotjs_environment_t* env) {
   // Initialize jerry.
   jerry_init(jerry_flags);
 
+#ifdef JERRY_DEBUGGER
   if (iotjs_environment_config(env)->debugger != NULL) {
     uint16_t port = iotjs_environment_config(env)->debugger->port;
 #ifdef JERRY_DEBUGGER
@@ -67,6 +68,7 @@ static bool jerry_initialize(iotjs_environment_t* env) {
 
     jerry_debugger_continue();
   }
+#endif
 
   // Set magic strings.
   iotjs_register_jerry_magic_string();
