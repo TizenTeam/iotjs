@@ -30,7 +30,8 @@ export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 CMAKE_OPTIONS+=-DFEATURE_PROFILE=es5.1
 os_type?=$(shell uname | tr '[A-Z]' '[a-z]' || echo "unknown")
 arch_type?=$(shell dpkg --print-architecture || echo "noarch")
-CMAKE_OPTIONS+=-DPLATFORM_DESCRIPTOR=${arch_type}-${os_type}
+CMAKE_OPTIONS+=-DTARGET_ARCH="${arch_type}"
+CMAKE_OPTIONS+=-DPLATFORM_DESCRIPTOR="${arch_type}-${os_type}"
 profile_file?=profiles/common.profile
 CMAKE_OPTIONS+=-DIOTJS_PROFILE="${profile_file}"
 export CMAKE_OPTIONS
