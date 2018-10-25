@@ -31,7 +31,7 @@ CMAKE_OPTIONS+=-DFEATURE_PROFILE=es5.1
 os_type?=$(shell uname | tr '[A-Z]' '[a-z]' || echo "unknown")
 
 debian_arch_type?=$(shell dpkg --print-architecture || echo "noarch")
-ifeq(${debian_arch_type}, amd64)
+ifeq (${debian_arch_type}, amd64)
 arch_type?=x86_64
 else
 arch_type?=${debian_arch_type}
