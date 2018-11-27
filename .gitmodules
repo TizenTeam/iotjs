@@ -6,7 +6,7 @@
 	url = https://github.com/Samsung/http-parser.git
 [submodule "deps/libtuv"]
 	path = deps/libtuv
-	url = https://github.com/Samsung/libtuv.git
+	url = https://github.com/tizenteam/libtuv.git
 [submodule "deps/mbedtls"]
 	path = deps/mbedtls
 	url = https://github.com/ARMmbed/mbedtls.git
