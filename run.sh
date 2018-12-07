@@ -26,28 +26,33 @@ env_()
     branch="master"
     url_suffix="#{branch}"
 
+    #{ TODO: Update here if forking
     # user="rzr" # Update here if forking
     org="TizenTeam"
     # branch="sandbox/${user}/${branch}"
     # url_suffix="#{branch}"
     url_suffix="" # TODO: For older docker
+    #}
 
     url="https://github.com/${org}/${project}.git${url_suffix}"
     run_url="https://raw.githubusercontent.com/${org}/${project}/${branch}/run.sh"
 
     release="0.0.0"
+    SELF="$0"
+    [ "$SELF" != "$SHELL" ] || SELF="${PWD}/run.sh"
+    [ "$SELF" != "/bin/dash" ] || SELF="${DASH_SOURCE}"
+    [ "$SELF" != "/bin/bash" ] || SELF="${BASH_SOURCE}"
+    self_basename=$(basename -- "${SELF}")
+    self_dirname=$(dirname -- "${SELF}")
+    [ "." != "$self_dirname" ] || SELF="${PWD}/${self_basename}"
+
+    cd "${self_dirname}"
     src=false
     if [ -d '.git' ] && which git > /dev/null 2>&1 ; then
         src=true
         branch=$(git rev-parse --abbrev-ref HEAD) ||:
         release=$(git describe --tags || echo "$release")
     fi
-
-    SELF="$0"
-    [ "$SELF" != "$SHELL" ] || SELF="${PWD}/run.sh"
-    [ "$SELF" != "/bin/bash" ] || SELF="${DASH_SOURCE}"
-    [ "$SELF" != "/bin/bash" ] || SELF="${BASH_SOURCE}"
-    self_basename=$(basename -- "${SELF}")
 }
 
 
@@ -73,8 +78,9 @@ die_()
 
 setup_debian_()
 {
-    which docker || sudo apt-get install docker.io
     which git || sudo apt-get install git
+    which docker || sudo apt-get install docker.io
+
 }
 
 
@@ -126,6 +132,8 @@ build_()
     tag=$(echo "${tag}" | tr [A-Z] [a-z])
     container="${project}"
     container=$(echo "${container}" | sed -e 's|/|-|g')
+    outdir="${PWD}/tmp/out"
+    echo "# $src"
     if $src && [ "run.sh" = "${self_basename}" ] ; then
         docker build -t "${tag}" .
     else
