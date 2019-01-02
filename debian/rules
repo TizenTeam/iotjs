@@ -22,6 +22,8 @@ project?=iotjs
 default: rule/debuild
 	@echo "#$@: $^"
 
+%:
+	dh $@
 
 # Comment this to turn off verbose mode.
 export DH_VERBOSE=1
@@ -56,9 +58,6 @@ prep_files+=deps/jerry/jerry-core/profiles/.profile
 prep_files+=deps/libtuv/cmake/config/config_${arch_type}-${os_type}.cmake
 prep_files+=deps/libtuv/cmake/option/option_${arch_type}-${os_type}.cmake
 
-
-%:
-	dh $@
 
 %.1: %.sgml
 	docbook-to-man $< > $@
