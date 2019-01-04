@@ -98,7 +98,6 @@ V=1 VERBOSE=1 ./tools/build.py \
 # --external-lib=sdkapi \
 
 %install
-%make_install
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_includedir}/iotjs
 mkdir -p %{buildroot}%{_libdir}/iotjs
