@@ -503,6 +503,9 @@ install(FILES ${IOTJS_PUBLIC_HEADERS} DESTINATION ${INCLUDE_INSTALL_DIR})
 
 # Configure the libiotjs
 set(TARGET_LIB_IOTJS libiotjs)
+# Configure the libiotjs.a
+set(TARGET_STATIC_IOTJS libiotjs)
+
 if(CREATE_SHARED_LIB)
   add_library(${TARGET_LIB_IOTJS} SHARED ${LIB_IOTJS_SRC})
 else()
@@ -559,7 +562,13 @@ target_link_libraries(${TARGET_LIB_IOTJS}
   ${MBEDTLS_LIBS}
   ${EXTERNAL_LIBS}
 )
-
+target_link_libraries(${TARGET_STATIC_IOTJS}
+  ${JERRY_LIBS}
+  ${TUV_LIBS}
+  libhttp-parser
+  ${MBEDTLS_LIBS}
+  ${EXTERNAL_LIBS}
+)
 if("${LIB_INSTALL_DIR}" STREQUAL "")
   set(LIB_INSTALL_DIR "lib")
 endif()
