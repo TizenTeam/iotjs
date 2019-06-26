@@ -1,3 +1,9 @@
+iotjs (0.0+1.0+690+g88f8e98e-0~rzr0+1.0+749+gd31e00cb) unstable; urgency=medium
+
+  * WIP: Rebase on upstream
+
+ -- Philippe Coval <p.coval@samsung.com>  Wed, 26 Jun 2019 15:05:20 +0200
+
 iotjs (0.0+1.0+688+ga5957f89-0~rzr0+1.0+743+g2f84e65d) unstable; urgency=medium
 
   * WIP: Rebase on upstream
