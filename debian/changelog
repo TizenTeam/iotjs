@@ -1,3 +1,9 @@
+iotjs (1.0.710-1) unstable; urgency=medium
+
+  * snapshot: release_1.0-710-g4ec67469
+
+ -- Philippe Coval <rzr@users.sf.net>  Fri, 24 Jul 2020 01:24:59 +0200
+
 iotjs (1.0-1) unstable; urgency=low
 
   * Initial release (Closes: #889824)
