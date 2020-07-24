@@ -16,6 +16,10 @@ cmake_minimum_required(VERSION 2.8)
 
 set(IOTJS_SOURCE_DIR ${ROOT_DIR}/src)
 
+if(NOT DEFINED PYTHON)
+  set(PYTHON "python")
+endif()
+
 function(find_value RESULT VALUE VALUE_TRUE VALUE_FALSE)
   list(FIND ARGN ${VALUE} idx)
   if(${idx} GREATER -1)
@@ -53,7 +57,7 @@ if(ENABLE_MINIMAL)
 endif()
 
 execute_process(
-  COMMAND python ${ROOT_DIR}/tools/module_analyzer.py
+  COMMAND ${PYTHON} ${ROOT_DIR}/tools/module_analyzer.py
           --mode cmake-dump
           --target-os ${TARGET_OS}
           --iotjs-include-module "${IOTJS_INCLUDE_MODULE}"
@@ -101,7 +105,7 @@ endif()
 
 add_custom_command(
   OUTPUT ${IOTJS_SOURCE_DIR}/iotjs_js.c ${IOTJS_SOURCE_DIR}/iotjs_js.h
-  COMMAND python ${ROOT_DIR}/tools/js2c.py
+  COMMAND ${PYTHON} ${ROOT_DIR}/tools/js2c.py
   ARGS --buildtype=${JS2C_RUN_MODE}
        --modules '${IOTJS_JS_MODULES}'
        ${JS2C_SNAPSHOT_ARG}
