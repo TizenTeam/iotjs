@@ -1,0 +1,31 @@
+From: Philippe Coval <rzr@users.sf.net>
+Date: Fri, 24 Jul 2020 22:05:08 +0200
+Subject: build: Set noarch as default TARGET_ARCH
+
+This will help for debian upgrade
+
+Change-Id: I2991d324b887e340cb676f7de8ea0dda2ea7c050
+Forwarded: https://github.com/jerryscript-project/iotjs/pull/1947
+Bug: https://github.com/jerryscript-project/iotjs/issues/1945
+Bug-Debian: https://bugs.debian.org/957364
+Origin: https://github.com/TizenTeam/iotjs/tree/sandbox/rzr/cmake/review/master
+IoT.js-DCO-1.0-Signed-off-by: Philippe Coval rzr@users.sf.net
+---
+ CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fe8c017..9cab35a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -107,6 +107,10 @@ if(EXPERIMENTAL)
+ endif()
+ 
+ # Add arch-dependant flags
++if(NOT DEFINED TARGET_ARCH)
++  message(WARNING "Use generic flags since TARGET_ARCH is not defined")
++  set(TARGET_ARCH "noarch")
++endif()
+ if("${TARGET_ARCH}" STREQUAL "arm")
+   iotjs_add_compile_flags(-D__arm__ -mthumb -fno-short-enums -mlittle-endian)
+ elseif("${TARGET_ARCH}" STREQUAL "i686")

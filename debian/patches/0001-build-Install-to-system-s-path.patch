@@ -1,0 +1,69 @@
+From: Philippe Coval <rzr@users.sf.net>
+Date: Wed, 26 Jun 2019 15:19:03 +0200
+Subject: build: Install to system's path
+
+Install directory is prefixed by destdir to install in staging directory.
+
+This change is useful for debian packaging.
+
+Runtime destination rely on RUNTIME_OUTPUT_DIRECTORY property
+
+This was introduced first in #1134 and then droped in #1848
+
+This will be helpful for packaging,
+or example on Tizen install using RPM macro: "%make_install"
+of Debian's debhelper.
+
+Work along CMAKE_INSTALL_PREFIX,
+or/and can be overloaded individualy to alternate locations.
+
+Email has been updated for community support.
+
+Forwarded: https://github.com/jerryscript-project/iotjs/pull/1923
+Bug: https://github.com/jerryscript-project/iotjs/issues/1945
+Relate-to: https://github.com/Samsung/iotjs/pull/1134
+Change-Id: Ib969a1d5c2e7bc402b455377fc57a94654aa74dc
+Origin: https://github.com/TizenTeam/iotjs/tree/sandbox/rzr/review/install/master
+Bug-Debian: https://bugs.debian.org/957364
+Update: 2020-07-24
+IoT.js-DCO-1.0-Signed-off-by: Philippe Coval rzr@users.sf.net
+---
+ cmake/iotjs.cmake | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/cmake/iotjs.cmake b/cmake/iotjs.cmake
+index cdd3d2f..b989b6d 100644
+--- a/cmake/iotjs.cmake
++++ b/cmake/iotjs.cmake
+@@ -566,24 +566,24 @@ endif()
+ if(NOT BUILD_LIB_ONLY)
+   set(TARGET_IOTJS iotjs)
+   message(STATUS "CMAKE_BINARY_DIR        ${CMAKE_BINARY_DIR}")
+-  message(STATUS "BINARY_INSTALL_DIR      ${INSTALL_PREFIX}/bin")
+-  message(STATUS "LIBRARY_INSTALL_DIR     ${INSTALL_PREFIX}/lib")
++  message(STATUS "BINARY_INSTALL_DIR      ${INSTALL_PREFIX}/${BIN_INSTALL_DIR})
++  message(STATUS "LIBRARY_INSTALL_DIR     ${INSTALL_PREFIX}/${LIB_INSTALL_DIR})
+ 
+   add_executable(${TARGET_IOTJS} ${ROOT_DIR}/src/platform/linux/iotjs_linux.c)
+   set_target_properties(${TARGET_IOTJS} PROPERTIES
+     LINK_FLAGS "${IOTJS_LINKER_FLAGS}"
+-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
++    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${BIN_INSTALL_DIR}"
+   )
+   target_include_directories(${TARGET_IOTJS} PRIVATE ${IOTJS_INCLUDE_DIRS})
+   target_link_libraries(${TARGET_IOTJS} ${TARGET_LIB_IOTJS})
+   install(TARGETS ${TARGET_IOTJS}
+-          RUNTIME DESTINATION "${INSTALL_PREFIX}/bin"
+-          LIBRARY DESTINATION "${INSTALL_PREFIX}/lib"
++          RUNTIME DESTINATION "${BIN_INSTALL_DIR}"
++          LIBRARY DESTINATION "${INSTALL_PREFIX}/${LIB_INSTALL_DIR}"
+           PUBLIC_HEADER DESTINATION "${INSTALL_PREFIX}/include/iotjs")
+   if(CREATE_SHARED_LIB)
+     install(TARGETS ${TARGET_LIB_IOTJS}
+-            RUNTIME DESTINATION "${INSTALL_PREFIX}/bin"
+-            LIBRARY DESTINATION "${INSTALL_PREFIX}/lib"
++            RUNTIME DESTINATION "${BIN_INSTALL_DIR}"
++            LIBRARY DESTINATION "${INSTALL_PREFIX}/${LIB_INSTALL_DIR}"
+             PUBLIC_HEADER DESTINATION "${INSTALL_PREFIX}/include/iotjs")
+   endif()
+ else()

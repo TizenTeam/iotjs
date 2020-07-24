@@ -1,0 +1,35 @@
+From: Philippe Coval <rzr@users.sf.net>
+Date: Thu, 20 Jun 2019 10:15:39 +0200
+Subject: build: Set board as generic if not defined
+
+Observed issue using cmake:
+
+    CMake Error at CMakeLists.txt:136 (string):
+    string no output variable specified
+
+This will help to keep iotjs in debian repo.
+
+Change-Id: I2991d324b887e340cb676f7de8ea0dda2ea7c050
+Forwarded: https://github.com/jerryscript-project/iotjs/pull/1943
+Bug: https://github.com/jerryscript-project/iotjs/issues/1945
+Bug-Debian: https://bugs.debian.org/957364
+Origin: https://github.com/TizenTeam/iotjs/tree/sandbox/rzr/build/review/master
+IoT.js-DCO-1.0-Signed-off-by: Philippe Coval rzr@users.sf.net
+---
+ CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d91ae13..fe8c017 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -132,6 +132,9 @@ else()
+ endif()
+ 
+ # Add board-dependant flags
++if(NOT DEFINED TARGET_BOARD)
++  set(TARGET_BOARD "generic")
++endif()
+ iotjs_add_compile_flags(-DTARGET_BOARD=${TARGET_BOARD})
+ string(TOUPPER ${TARGET_BOARD} TARGET_BOARD_UPPER)
+ string(CONCAT TARGET_BOARD_SYMBOL "TARGET_BOARD_" ${TARGET_BOARD_UPPER})

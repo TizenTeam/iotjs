@@ -1,0 +1,6 @@
+0001-build-Install-to-system-s-path.patch
+0002-build-Install-headers.patch
+0003-build-Install-static-lib.patch
+0004-build-Set-board-as-generic-if-not-defined.patch
+0005-build-Set-noarch-as-default-TARGET_ARCH.patch
+0006-cmake-Allow-to-select-python3-from-env.patch
