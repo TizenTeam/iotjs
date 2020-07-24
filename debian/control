@@ -2,12 +2,12 @@ Source: iotjs
 Maintainer: Philippe Coval <rzr@users.sf.net>
 Section: web
 Priority: optional
-Build-Depends: debhelper (>= 10),
+Build-Depends: debhelper-compat (= 12),
                cmake,
                docbook-to-man,
                python,
                libcurl4-gnutls-dev | libcurl-ssl-dev | libcurl-dev
-Standards-Version: 4.1.3
+Standards-Version: 4.5.0
 Homepage: https://iotjs.net
 
 Package: iotjs
