@@ -372,13 +372,17 @@ else()
   set(JS2C_PREPROCESS_ARGS -E -dD)
 endif()
 
+if(NOT DEFINED PYTHON)
+  set(PYTHON "python")
+endif()
+
 string (REPLACE ";" "," IOTJS_JS_MODULES_STR "${IOTJS_JS_MODULES}")
 add_custom_command(
   OUTPUT ${IOTJS_SOURCE_DIR}/iotjs_js.c ${IOTJS_SOURCE_DIR}/iotjs_js.h
   COMMAND ${CMAKE_C_COMPILER} ${JS2C_PREPROCESS_ARGS} ${IOTJS_MODULE_DEFINES}
             ${IOTJS_SOURCE_DIR}/iotjs_magic_strings.h
           > ${IOTJS_SOURCE_DIR}/iotjs_magic_strings.in
-  COMMAND python ${ROOT_DIR}/tools/js2c.py
+  COMMAND ${PYTHON} ${ROOT_DIR}/tools/js2c.py
   ARGS --buildtype=${JS2C_RUN_MODE}
        --modules "${IOTJS_JS_MODULES_STR}"
        ${JS2C_SNAPSHOT_ARG}
