@@ -1,0 +1,31 @@
+From: Philippe Coval <rzr@users.sf.net>
+Date: Tue, 28 Jul 2020 16:48:29 +0200
+Subject: build: Disable error on warning
+
+Signed-off-by: Philippe Coval <rzr@users.sf.net>
+---
+ deps/jerry/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/deps/jerry/CMakeLists.txt b/deps/jerry/CMakeLists.txt
+index d27997c..eeda46b 100644
+--- a/deps/jerry/CMakeLists.txt
++++ b/deps/jerry/CMakeLists.txt
+@@ -137,7 +137,7 @@ macro(jerry_add_compile_warnings)
+   foreach(_warning ${ARGV})
+     jerry_add_compile_flags(-W${_warning})
+     if(USING_GCC)
+-      jerry_add_compile_flags(-Werror=${_warning})
++      jerry_add_compile_flags()
+     endif()
+   endforeach()
+ endmacro()
+@@ -206,7 +206,7 @@ elseif(USING_CLANG)
+ endif()
+ 
+ if(JERRY_LIBC)
+-  jerry_add_compile_flags(-Werror)
++  jerry_add_compile_flags()
+ endif()
+ 
+ # C
