@@ -1,3 +1,17 @@
+iotjs (1.0-2) unstable; urgency=medium
+
+  * Import Debian changes 1.0-1
+  * debian: Relax compiler to continue on warnings (Closes: #957364)
+  * debian: Lint control file
+  * cmake: Allow one to select python3 from env
+  * debian: Prefer python3 (Closes: #936738)
+  * debian: Update urls with duck
+  * debian: Remove ambiguity on MIT licences
+  * debian: Bump standards to current
+  * debian: Support gbp custom branches
+
+ -- Philippe Coval <rzr@users.sf.net>  Sat, 25 Jul 2020 07:26:17 +0200
+
 iotjs (1.0-1) unstable; urgency=low
 
   * Initial release (Closes: #889824)
