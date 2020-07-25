@@ -35,6 +35,8 @@ export CMAKE_OPTIONS
 	docbook-to-man $< > $@
 
 override_dh_auto_configure:
+	sed -e 's/-Werror=.*)/)/g' -e 's/-Werror//g' \
+  -i deps/*/CMakeLists.txt
 	dh_auto_configure -- ${CMAKE_OPTIONS}
 
 override_dh_installman: debian/${project}.1
