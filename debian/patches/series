@@ -1,2 +1,3 @@
 0001-iotjs-Install-binaries-to-system-1134.patch
 0002-build-Install-headers-to-system.patch
+0003-cmake-Allow-one-to-select-python3-from-env.patch

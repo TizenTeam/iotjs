@@ -1,0 +1,37 @@
+From: Philippe Coval <rzr@users.sf.net>
+Date: Fri, 24 Jul 2020 13:03:51 +0200
+Subject: cmake: Allow one to select python3 from env
+
+This will be useful for next debian release shipping python3
+
+Change-Id: Ie3a9e8ea9152247efa85a4e87bd121016a466795
+Bug: https://github.com/jerryscript-project/iotjs/issues/1945
+Bug-Debian: https://bugs.debian.org/936738
+Forwarded: https://github.com/jerryscript-project/iotjs/pull/1946
+Origin: https://github.com/TizenTeam/iotjs/tree/sandbox/rzr/python/review/master
+Last-Update: 2020-07-25
+IoT.js-DCO-1.0-Signed-off-by: Philippe Coval rzr@users.sf.net
+
+Change-Id: I48bf135d7a3af6e64859252078931ff3388a87a6
+---
+ cmake/iotjs.cmake | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/iotjs.cmake b/cmake/iotjs.cmake
+index ce54711..bdcf159 100644
+--- a/cmake/iotjs.cmake
++++ b/cmake/iotjs.cmake
+@@ -99,9 +99,12 @@ if(ENABLE_SNAPSHOT)
+   set(IOTJS_CFLAGS ${IOTJS_CFLAGS} -DENABLE_SNAPSHOT)
+ endif()
+ 
++if(NOT DEFINED PYTHON)
++  set(PYTHON "python")
++endif()
+ add_custom_command(
+   OUTPUT ${IOTJS_SOURCE_DIR}/iotjs_js.c ${IOTJS_SOURCE_DIR}/iotjs_js.h
+-  COMMAND python ${ROOT_DIR}/tools/js2c.py
++  COMMAND ${PYTHON} ${ROOT_DIR}/tools/js2c.py
+   ARGS --buildtype=${JS2C_RUN_MODE}
+        --modules '${IOTJS_JS_MODULES}'
+        ${JS2C_SNAPSHOT_ARG}
