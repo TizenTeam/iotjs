@@ -1,3 +1,19 @@
+iotjs (1.0-2) unstable; urgency=medium
+
+  * debian/control: Lint control file
+  * debian/copyright: Update urls with duck
+  * debian/copyright: Add upstream contact to debian/copyright
+  * debian/control: Add Rules-Requires-Root field
+  * debian/patches: Select python3 from env if needed
+  * debian: Prefer python3 (Closes: #936738)
+  * debian/patch: Relax compiler to continue on warnings (Closes: #957364)
+  * debian: Bump standards to current
+  * debian/upstream: Add metadata file
+  * debian/control: Add Vcs fields to salsa
+  * debian/gbp.conf: Support gbp custom branches
+
+ -- Philippe Coval <rzr@users.sf.net>  Tue, 28 Jul 2020 17:01:03 +0200
+
 iotjs (1.0-1) unstable; urgency=low
 
   * Initial release (Closes: #889824)
