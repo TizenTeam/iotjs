@@ -1,0 +1,51 @@
+From: Philippe Coval <rzr@users.sf.net>
+Date: Fri, 24 Jul 2020 13:03:51 +0200
+Subject: cmake: Select python3 from env if needed
+
+Bug: https://github.com/jerryscript-project/iotjs/issues/1945
+Bug-Debian: https://bugs.debian.org/936738
+Forwarded: https://github.com/jerryscript-project/iotjs/pull/1946
+Origin: https://github.com/TizenTeam/iotjs/tree/sandbox/rzr/python/review/master
+Last-Update: 2020-07-25
+
+This will be useful for next debian release shipping python3
+
+Change-Id: Ie3a9e8ea9152247efa85a4e87bd121016a466795
+IoT.js-DCO-1.0-Signed-off-by: Philippe Coval rzr@users.sf.net
+---
+ cmake/iotjs.cmake | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/iotjs.cmake b/cmake/iotjs.cmake
+index ce54711..28bd736 100644
+--- a/cmake/iotjs.cmake
++++ b/cmake/iotjs.cmake
+@@ -16,6 +16,10 @@ cmake_minimum_required(VERSION 2.8)
+ 
+ set(IOTJS_SOURCE_DIR ${ROOT_DIR}/src)
+ 
++if(NOT DEFINED PYTHON)
++  set(PYTHON "python")
++endif()
++
+ function(find_value RESULT VALUE VALUE_TRUE VALUE_FALSE)
+   list(FIND ARGN ${VALUE} idx)
+   if(${idx} GREATER -1)
+@@ -53,7 +57,7 @@ if(ENABLE_MINIMAL)
+ endif()
+ 
+ execute_process(
+-  COMMAND python ${ROOT_DIR}/tools/module_analyzer.py
++  COMMAND ${PYTHON} ${ROOT_DIR}/tools/module_analyzer.py
+           --mode cmake-dump
+           --target-os ${TARGET_OS}
+           --iotjs-include-module "${IOTJS_INCLUDE_MODULE}"
+@@ -101,7 +105,7 @@ endif()
+ 
+ add_custom_command(
+   OUTPUT ${IOTJS_SOURCE_DIR}/iotjs_js.c ${IOTJS_SOURCE_DIR}/iotjs_js.h
+-  COMMAND python ${ROOT_DIR}/tools/js2c.py
++  COMMAND ${PYTHON} ${ROOT_DIR}/tools/js2c.py
+   ARGS --buildtype=${JS2C_RUN_MODE}
+        --modules '${IOTJS_JS_MODULES}'
+        ${JS2C_SNAPSHOT_ARG}
