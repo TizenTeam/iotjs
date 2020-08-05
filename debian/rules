@@ -23,7 +23,10 @@ project?=iotjs
 export DH_VERBOSE=1
 export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 
+jerry_profile?=es5.1
+
 CMAKE_OPTIONS+=-DFEATURE_PROFILE=es5.1
+CMAKE_OPTIONS+=-DJERRY_PROFILE="${jerry_profile}"
 CMAKE_OPTIONS+=-DPLATFORM_DESCRIPTOR=noarch-linux
 CMAKE_OPTIONS+=-DPYTHON="python3"
 export CMAKE_OPTIONS
