@@ -31,3 +31,13 @@ Description: Developer files for Javascript Framework for IoT
  This package ships static library and developments files.
  C Headers are installed into iotjs namespace.
  This is mostly useful to embed iot.js in applications or debugging purposes.
+
+Package: iotjs-snapshot
+Architecture: all
+Section: utils
+Depends: ${misc:Depends}, iotjs (= ${source:Version})
+Suggests: rzr
+Priority: extra
+Description: unreleased snapshot version
+ TODO: Remove on issue and upgrade iotjs
+
