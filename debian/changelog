@@ -1,3 +1,10 @@
+iotjs (0.1.0+745+g8bd53b9d-1.0+745+g8bd53b9d) unstable; urgency=medium
+
+  * WIP: debian: Release 0.1.0+745+g8bd53b9d-1.0+745+g8bd53b9d
+    (snapshot)
+
+ -- Philippe Coval <rzr@users.sf.net>  Thu, 06 Aug 2020 12:11:06 +0200
+
 iotjs (0.0.0-0) unstable; urgency=medium
 
   * wip: https://purl.org/rzr
